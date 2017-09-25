@@ -1,3 +1,15 @@
+@import "./reset";
+@import "materialize/components/color";
+$primary-color: color("blue", "lighten-2") !default;
+@import "materialize";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "./variables";
+@import "font-awesome";
+@import "./navBar";
+@import "./mainView";
+
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -13,6 +25,3 @@
  *= require_tree .
  *= require_self
  */
-
-@import "bootstrap-sprockets";
-@import "bootstrap";
