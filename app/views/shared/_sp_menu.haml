@@ -1,0 +1,33 @@
+.container#slide_menu.open
+  .row
+    .section
+    .col.s1.menu_close.btn.btn-large.wave-effect.right.neg_btn_color
+      = "X"
+  .row
+    .col.s12.side_menu_items
+      .menu_text.col.s12
+        = link_to "ほーむ", root_path
+        .divider
+      = link_to products_path do
+        .col.s12
+          = "ストレインを探す"
+          .divider
+      .col.s12
+        = "レビューを書く"
+        .divider
+      .col.s12
+        = "マイページ"
+        .divider
+  - if user_signed_in?
+    .row
+      .col.s5.btn.waves-effect.left.menu_btn_text
+        = link_to "プロフィール編集", edit_user_registration_path
+      .col.s5.btn.waves-effect.right.neg_btn_color.menu_btn_text
+        = link_to "ログアウト", destroy_user_session_path, method: :delete
+  - else
+    .row
+      .col.s5.btn.waves-effect.left.menu_btn_text
+        = link_to "サインアップ", new_user_registration_path
+      .col.s5.btn.waves-effect.right.menu_btn_text
+        = link_to "ログイン", new_user_session_path
+

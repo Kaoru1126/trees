@@ -1,9 +1,13 @@
+= render 'shared/sp_menu'
+= render 'layouts/flash'
 .navbar_area.flex.space_btw
   .sp_menu_btn.waves-effect
-    = image_tag "sp_menu_btn.jpg", class: "sp_btn_image "
+    = image_tag "sp_menu_btn.jpg", class: "sp_btn_image"
   .logo_area
-    = image_tag "logo_kari.jpg", class: "logo_image"
-  .i.material-icons.search.modal-trigger.waves-effect.waves-light search
+    = link_to root_path do
+      = image_tag "logo_kari.jpg", class: "logo_image"
+  = link_to products_path do
+    .i.material-icons.search.modal-trigger.waves-effect.waves-light search
 
   / Modal Structure
   / <div id="modal1" class="modal modal-fixed-footer">

@@ -1,0 +1,2 @@
+class Dominant < ApplicationRecord
+end

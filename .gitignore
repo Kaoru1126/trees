@@ -19,3 +19,4 @@ public/
 
 config/secrets.yml
 public/uploads/tmp/
+/scraping.rb

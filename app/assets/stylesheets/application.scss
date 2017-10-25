@@ -7,8 +7,11 @@ $primary-color: color("blue", "lighten-2") !default;
 @import "./variables";
 @import "font-awesome";
 @import "./navBar";
+@import "./flash";
 @import "./mainView";
-
+@import "./sideMenu";
+@import "./products";
+@import "./reviews";
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files

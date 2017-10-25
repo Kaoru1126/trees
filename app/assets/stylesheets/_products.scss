@@ -1,0 +1,122 @@
+.test {
+  background-color: blue;
+}
+.test2 {
+  background-color: yellow;
+}
+
+.fs_20 {
+  font-size: 20px;
+}
+
+.fs_26 {
+  font-size: 26px;
+}
+
+.fs_30 {
+  font-size: 30px;
+}
+
+.fs_36 {
+  font-size: 36px;
+}
+
+.fs_40 {
+  font-size: 40px;
+}
+
+.fs_50 {
+  font-size: 50px;
+}
+
+.fs_60 {
+  font-size: 60px;
+}
+
+.font_c {
+  color: white;
+}
+
+.flex_jc_center {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+// カードの色変えたい by dominant
+.idc {
+  background-color: $idc;
+}
+
+.stv {
+  background-color: $stv;
+}
+
+.idh {
+  background-color: $idh;
+}
+
+.sdh {
+  background-color: $sdh;
+}
+
+.hyb {
+  background-color: $hyb;
+}
+
+.index_img_size {
+  margin: 15px auto;
+  width: 300px;
+  height: 300px;
+  background-size: contain;
+}
+
+input[type=text]:not(.browser-default), {
+  height: 8rem;
+  font-size: 6rem;
+}
+
+// ボタンのcss
+.col.s2.search_btn_box {
+  font-size: 6rem;
+  height: 8rem;
+}
+
+.show_top_img_place {
+  width: 100%;
+}
+
+.show_top_img_size {
+  width: 100%;
+  position: relative;
+}
+
+.show_absolute {
+  position: absolute;
+}
+
+.show_posi_detail {
+  top: 12%;
+  margin: 0px 13%;
+}
+
+.trans_bg_grey {
+  background: rgba(0,0,0, 0.6);
+}
+
+.text_wh {
+  color:  #ffffff;
+}
+
+.edit.btn_detail {
+  font-size: 11rem;
+  height: 12rem;
+  width: 12rem;
+}
+
+.link_to_show {
+  color: black;
+}
