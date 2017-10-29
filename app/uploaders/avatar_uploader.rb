@@ -1,4 +1,4 @@
-class ImageUploader < CarrierWave::Uploader::Base
+class AvatarUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -47,8 +47,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   def default_url
-    "cannabis_01.jpg"
+    "default_user.png"
   end
-
 
 end

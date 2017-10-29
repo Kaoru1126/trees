@@ -1,23 +1,62 @@
 .container#slide_menu.open
   .row
     .section
-    .col.s1.menu_close.btn.btn-large.wave-effect.right.neg_btn_color
-      = "X"
+      .col.s1.menu_close.btn.wave-effect.right.neg_btn_color
+        = "X"
+  - if user_signed_in?
+    .row.text_wh
+      .col.s12.center-align
+        = link_to image_tag(current_user.avatar, {:class=>"menu_icon"}),user_path(current_user.id)
+        .section
+      .col.s12.fs_60.center-align
+        = current_user.nickname
+      .col.s12.fs_40.center-align
+        .col.s4
+          %i.fa.fa-tree
+            = current_user.reviews.count
+        .col.s4
+          %i.fa.fa-heart
+            = current_user.reviews.count
+        .col.s4
+          %i.fa.fa-comments-o
+            = ":" + "#{current_user.reviews.count}"
+    .divider
+  - else
+    .row.text_wh
+      .col.s12.center-align
+        = link_to image_tag("default_user.png", {:class=>"menu_icon"}),new_user_session_path
+        .section
+      .col.s12.fs_60.center-align
+        = "名無しのストーナーさん"
+      .col.s12.fs_40.center-align
+        .col.s4
+          = link_to new_user_session_path do
+            %i.fa.fa-tree
+              = ": 0"
+        .col.s4
+          = link_to new_user_session_path do
+            %i.fa.fa-heart
+              = ": 0"
+        .col.s4
+          = link_to new_user_session_path do
+            %i.fa.fa-comments-o
+              = ": 0"
+    .divider
   .row
     .col.s12.side_menu_items
-      .menu_text.col.s12
-        = link_to "ほーむ", root_path
+      .col.s12
+        = link_to "ホーム", root_path
         .divider
-      = link_to products_path do
-        .col.s12
-          = "ストレインを探す"
+      .col.s12
+        = link_to "ストレインを探す", products_path
+        .divider
+      .col.s12
+        = link_to "レビューを書く", search_products_path
+        .divider
+      .col.s12
+        - if user_signed_in?
+          = link_to "マイページ", user_path(current_user)
           .divider
-      .col.s12
-        = "レビューを書く"
-        .divider
-      .col.s12
-        = "マイページ"
-        .divider
   - if user_signed_in?
     .row
       .col.s5.btn.waves-effect.left.menu_btn_text

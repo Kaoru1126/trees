@@ -12,6 +12,8 @@ $primary-color: color("blue", "lighten-2") !default;
 @import "./sideMenu";
 @import "./products";
 @import "./reviews";
+@import "./users";
+@import "./favproducts";
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files

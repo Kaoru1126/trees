@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171010064340) do
+ActiveRecord::Schema.define(version: 20171029062651) do
 
   create_table "dominants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "dominant"
@@ -18,13 +18,23 @@ ActiveRecord::Schema.define(version: 20171010064340) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "favproducts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_favproducts_on_product_id", using: :btree
+    t.index ["user_id"], name: "index_favproducts_on_user_id", using: :btree
+  end
+
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "productName",  default: "", null: false
     t.string   "productImage"
-    t.string   "dominant"
+    t.string   "dominant",     default: ""
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.string   "thc"
+    t.integer  "fav_counts",   default: 0
     t.index ["productName"], name: "index_products_on_productName", using: :btree
   end
 
@@ -32,7 +42,7 @@ ActiveRecord::Schema.define(version: 20171010064340) do
     t.integer  "user_id",                   null: false
     t.integer  "product_id",                null: false
     t.text     "review",      limit: 65535, null: false
-    t.integer  "rate"
+    t.integer  "rate",                      null: false
     t.string   "reviewImage"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
@@ -73,6 +83,8 @@ ActiveRecord::Schema.define(version: 20171010064340) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "favproducts", "products"
+  add_foreign_key "favproducts", "users"
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users"
 end

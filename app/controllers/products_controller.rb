@@ -15,16 +15,14 @@ class ProductsController < ApplicationController
 
     #レビュー表示用
 
-    ##個別ストレイの直近３レビューを出す
+    ##個別ストレインの直近レビューを出す
     theStrainsReviews = Review.includes(:user).where("product_id = ?", params[:id])
+    @theStrainsReviewsCount = theStrainsReviews.count
     @theStrainsReviews = theStrainsReviews.order("created_at DESC").limit(1)
-
 
     @findingStrain = Product.find(params[:id])
     @thereview = Review.find_by(params[:id])
     @recentReviews = Review.includes(:user).order("created_at DESC").limit(3)
-    binding.pry
-
   end
 
   def search

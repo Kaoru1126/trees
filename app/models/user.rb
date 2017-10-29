@@ -7,5 +7,9 @@ class User < ApplicationRecord
 
   # アソシエーション
   has_many :reviews
-  
+  has_many :favproducts
+
+  #アップローダー
+  mount_uploader :avatar, AvatarUploader
+
 end

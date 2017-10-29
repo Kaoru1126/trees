@@ -14,5 +14,7 @@ Rails.application.routes.draw do
       end
   end
 
+  resources :favproducts, only: [:index, :create, :destroy]
+
 end
 

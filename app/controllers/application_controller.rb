@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   # before_action :authenticate_user!
   before_action :request_path
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :configure_permitted_parameters_edit, if: :devise_controller?
   # before_filter :set_request_from
 
   def request_path
@@ -9,6 +11,14 @@ class ApplicationController < ActionController::Base
     def @path.is(*str)
         str.map{|s| self.include?(s)}.include?(true)
     end
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
+  end
+
+  def configure_permitted_parameters_edit
+    devise_parameter_sanitizer.permit(:account_update, keys: [:avatar, :intro])
   end
 
   # def set_request_from

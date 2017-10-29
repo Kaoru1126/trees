@@ -5,6 +5,7 @@ class Review < ApplicationRecord
   belongs_to :user
   belongs_to :product
 
+
   mount_uploader :reviewImage, ReviewImageUploader
 
   validates :rate, numericality: {

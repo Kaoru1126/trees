@@ -27,6 +27,13 @@
   top: 10px;
 }
 
+.menu_icon {
+    width: 300px;
+    height: 300px;
+    background-size: cover;
+    border-radius: 50%;
+}
+
 .menu_close {
   font-size: 28px;
 }
@@ -36,11 +43,8 @@
   color: white;
 }
 
-.menu_text {
-
-}
-
 .menu_btn_text {
  font-size: 20px;
  font-weight: bold;
 }
+

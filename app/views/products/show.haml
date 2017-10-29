@@ -1,27 +1,5 @@
 = render 'shared/navBar'
-.show_top_img_place
-  = image_tag @product.productImage, class: "show_top_img_size pt_14"
-  .container.show_absolute.show_posi_detail
-    .row
-      .col.s12.card.z-depth-3.trans_bg_grey.text_wh.center-align
-        .col.s12.fs_60
-          = @product.productName
-    .row.card.z-depth-3.trans_bg_grey.text_wh.center-align
-      .col.s12.fs_60
-        = "★★★★☆ : 4.0"
-        .divider
-      .col.s12.fs_50
-        = @product.dominant
-        .divider
-      .col.s12.fs_30
-        = @product.thc
-        .divider
-      .col.s12.fs_30
-        = "合計レビュー数:40"
-    .row
-      .col.right
-        = link_to new_product_review_path (@product) do
-          .i.material-icons.cyan.btn-floating.pulse.edit.btn_detail edit
+= render 'layouts/productNewShow/'
 .bg_lg.c_pw
   .container
     .row

@@ -1,0 +1,60 @@
+.show_top_img_place
+  = image_tag @product.productImage, class: "show_top_img_size pt_14"
+  .container.show_absolute.show_posi_detail
+    .row
+      .col.s12.card.z-depth-3.trans_bg_grey.text_wh.center-align
+        .col.s12.fs_60
+          = @product.productName
+    .row.card.z-depth-3.trans_bg_grey.text_wh.center-align
+      .col.s12.fs_60
+        = "★★★★☆ : 4.0"
+        .divider
+      .col.s12.fs_50
+        = @product.dominant
+        .divider
+      .col.s12.fs_40
+        = @product.thc
+        .divider
+      .col.s12.fs_40
+        .col.s4
+          %i.fa.fa-tree
+            = @theStrainsReviewsCount
+        .col.s4
+          %i.fa.fa-heart
+            = @theStrainsReviewsCount
+        .col.s4
+          %i.fa.fa-comments-o
+            = @theStrainsReviewsCount
+    .row
+      - if user_signed_in? #ユーザーログインしてる
+        .col.s2.right
+          = link_to new_product_review_path (@product) do
+            .btn-floating.btn_detail.pulse.orange
+              %i.fa.fa-pencil-square-o.for_tap.font_margin
+        -if haveIFavedProduct?(@product) #favしてる時の処理
+          .col.s3.right
+            = link_to favproduct_path(current_user.favproducts.find_by(product_id:@product.id)), method: :delete do
+              .btn-floating.btn_detail.grey.unfavTrigger{user: {id: current_user.id}, product: {id: @product.id}}
+                %i.fa.fa-heart.for_tap.font_margin
+        -else #current_user.favproducts.find_by(product_id: @product) favしてない場合の処理
+          .col.s3.right
+            = link_to new_product_review_path (@product) do
+              .btn-floating.btn_detail.pulse.pink.favTrigger{user: {id: current_user.id}, product: {id: @product.id}}
+                %i.fa.fa-heart.for_tap.font_margin
+        .col.s3.right
+          = link_to new_product_review_path (@product) do
+            .btn-floating.btn_detail.pulse.green
+              %i.fa.fa-tree.for_tap.font_margin
+      - else #ユーザーログインしてない
+        .col.right
+          = link_to new_user_session_path do
+            .btn-floating.btn_detail.pulse.grey
+              %i.fa.fa-pencil-square-o.for_tap.font_margin
+        .col.right
+          = link_to new_user_session_path do
+            .btn-floating.btn_detail.grey
+              %i.fa.fa-heart.for_tap.font_margin
+        .col
+          = link_to new_product_review_path (@product) do
+            .btn-floating.btn_detail.grey
+              %i.fa.fa-tree.for_tap.font_margin

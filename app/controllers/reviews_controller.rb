@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_strain_status
 
   def new
     @product = Product.find(params[:product_id])
@@ -20,10 +21,17 @@ class ReviewsController < ApplicationController
   end
 
 
+
   private
 
   def review_params
     params.require(:review).permit(:review, :rate, :reviewImage).merge(user_id: current_user.id, product_id: @product.id)
+  end
+
+
+  def set_strain_status
+    theStrainsReviews = Review.includes(:user).where("product_id = ?", params[:product_id])
+    @theStrainsReviewsCount = theStrainsReviews.count
   end
 
 end
