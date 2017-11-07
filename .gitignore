@@ -14,9 +14,21 @@
 !/tmp/.keep
 public/
 
+
+
 # Ignore Byebug command history file.
 .byebug_history
 
 config/secrets.yml
 public/uploads/tmp/
 /scraping.rb
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml
+
+# added
+scraping_add.rb
+scraping_dominant.rb
+scraping_hybrid.rb
+scraping_strain.rb
+scraping_thc.rb
