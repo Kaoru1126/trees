@@ -14,6 +14,12 @@ $primary-color: color("blue", "lighten-2") !default;
 @import "./reviews";
 @import "./users";
 @import "./favproducts";
+@import "./devise";
+@import "./top";
+
+html {
+  background: #F5F4F0;
+}
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files

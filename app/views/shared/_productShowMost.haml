@@ -1,0 +1,77 @@
+.row.product_show_most_rated
+  .section
+  .col.s12.z-depth-3.text_wh.center-align.fs_60.green
+    = "最も評価の高いレビュー"
+- @theMostRatedReview.each do |mostRated|
+  .row.most_rated_review.trans_bg_grey.text_wh
+    .col.s12.z-depth-3.trans_bg_l-grey.waves-effect
+      = link_to user_path(mostRated.user.id) do
+        .col.s2
+          .section
+          = image_tag mostRated.user.avatar, class: "circle inreview_size"
+        .col.s10
+          .section
+          .col.s12.fs_40.left-align
+            = mostRated.user.nickname
+          .col.s12.fs_20.left-align
+            = mostRated.created_at
+            .section
+    .col.s12.left-align
+      .col.s12.fs_50.truncate
+        = mostRated.product.productName
+      .col.s12.fs_.fs_30
+        = mostRated.product.dominant
+      .col.s12
+        .col.s6.fs_20
+          - if mostRated.rate <=  10.0 && mostRated.rate >= 0.1
+            %span.right.rate.rate0-5
+          -elsif mostRated.rate <= 20.0 && mostRated.rate >= 10.1
+            %span.right.rate.rate1
+          -elsif mostRated.rate <= 30.0 && mostRated.rate >= 20.1
+            %span.right.rate.rate1-5
+          -elsif mostRated.rate <= 40.0 && mostRated.rate >= 30.1
+            %span.right.rate.rate2
+          -elsif mostRated.rate <= 50.0 && mostRated.rate >= 40.1
+            %span.right.rate.rate2-5
+          -elsif mostRated.rate <= 60.0 && mostRated.rate >= 50.1
+            %span.right.rate.rate3
+          -elsif mostRated.rate <= 70.0 && mostRated.rate >= 60.1
+            %span.right.rate.rate3-5
+          -elsif mostRated.rate <= 80.0 && mostRated.rate >= 70.1
+            %span.right.rate.rate4
+          -elsif mostRated.rate <= 90.0 && mostRated.rate >= 80.1
+            %span.right.rate.rate4-5
+          -elsif mostRated.rate <= 100.0 && mostRated.rate >= 90.1
+            %span.right.rate.rate5
+          -else
+            %span.right.rate.rate0
+        .col.s6.fs_50
+          = ": " + "#{mostRated.rate}" + "/100pts"
+    .col.s12.fs_30.left-align
+      .divider
+      = simple_format(mostRated.review)
+    -if mostRated.reviewImage.present?
+      .col.s12
+        = image_tag(mostRated.reviewImage, class: "review_image_size")
+      .divider
+    .col.s12.fs_20.right-align
+      = "#{mostRated.likereviews_counts}" + "人がこのレビューを高く評価しています"
+    - if user_signed_in?
+      - if haveILikedReview? (mostRated)
+        = link_to likereview_path(current_user.likereviews.find_by(review_id:mostRated.id)), method: :delete do
+          .col.s12.btn.waves-effect.btn-large.grey.unlikeReviewTrigger{user: {id: current_user.id}, review: {id: mostRated.id}}
+            %i.fa.fa-smile-o.goodreview_btn
+              = "Already liked this review!"
+            %i.fa.fa-smile-o.goodreview_btn
+      - else
+        = link_to product_path (@product.id) do
+          .col.s12.btn.waves-effect.btn-large.likeReviewTrigger{user: {id: current_user.id}, review: {id: mostRated.id}}
+            %i.fa.fa-smile-o.goodreview_btn
+              = "It's a great review! "
+            %i.fa.fa-smile-o.goodreview_btn
+    -else
+      = link_to new_user_session_path do
+        .col.s12.btn.waves-effect.btn-large
+          %i.fa.fa-smile-o.goodreview_btn
+            = "ログインして、レビューを評価"
+          %i.fa.fa-smile-o.goodreview_btn

@@ -1,42 +1,73 @@
-.container
-  %h2
-    Edit #{resource_name.to_s.humanize}
-  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-    = devise_error_messages!
-    .field
-      = f.label :email
-      %br/
-      = f.email_field :email, autofocus: true
-    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-      %div
-        Currently waiting confirmation for: #{resource.unconfirmed_email}
-    .field
-      = f.label :password
-      %i (leave blank if you don't want to change it)
-      %br/
-      = f.password_field :password, autocomplete: "off"
-      - if @minimum_password_length
-        %br/
-        %em
-          = @minimum_password_length
-          characters minimum
-    .field
-      = f.label :password_confirmation
-      %br/
-      = f.password_field :password_confirmation, autocomplete: "off"
-    .field
-      = f.label :current_password
-      %i (we need your current password to confirm your changes)
-      %br/
-      = f.password_field :current_password, autocomplete: "off"
-    .field
-      .btn.input-field
-        = f.file_field :avatar
-    .actions.btn
-      = f.submit "Update"
-  .col.s12
-    = "アカウント削除"
-  .btn
-    Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-  .btn
-    = link_to "Back", :back
+%body#user_edit
+  .container.text_wh
+    .row.header_edit.trans_bg_grey.fs_60
+      .col.s12.center-align
+        = "Edit #{resource_name.to_s.humanize}"
+    .row.contents_box_edit_mid.trans_bg_grey
+      .col.s12
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+        = devise_error_messages!
+        .col.s12
+          .field
+            %br/
+            = f.email_field :email, autofocus: true, :class => "user_new_email_input", :placeholder => "E-mail"
+          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+            %div
+              Currently waiting confirmation for: #{resource.unconfirmed_email}
+        .col.s12.fs_20
+          = "次回ログイン時に使用します、SNS認証の機能は...お待ち下さい"
+        .col.s12
+          .field
+            %br/
+            = f.text_field :nickname, maxlength: "14", :placeholder => "Nickname"
+        .col.s12.fs_20
+          = "レビュー投稿の際に、公開される名前です"
+          .section
+        .col.s12
+          .field
+            %br/
+            = f.text_area :intro, :class => "materialize-textarea userIntro", "data-length" => "420", :placeholder => "あなたの事を教えてね。"
+        .col.s12.fs_20
+          = "マイページの自己紹介です"
+          .section
+        .col.s12
+          .field
+            %br/
+            = f.password_field :password, autocomplete: "off", :placeholder => "New Password"
+            %i (パスワードを変更しない場合、空白のまま更新して下さい。パスワードは半角#{@minimum_password_length} 文字以上が必要です)
+            - if @minimum_password_length
+              %br/
+          .section
+        .col.s12
+          .field
+            %br/
+            = f.password_field :password_confirmation, autocomplete: "off", :placeholder => "New Password"
+            %i (上で入力した新しいパスワードをもう一度入力して下さい。パスワードを変更をしない場合、空白のまま更新して下さい。)
+          .section
+          .section
+        .col.s12.bold.fs_20
+          = "プロフィール画像"
+          .field.btn.user_new_avatar_input
+            = f.file_field :avatar
+          .section
+        .col.s12
+          .field
+            %br/
+            = f.password_field :current_password, autocomplete: "off", :placeholder => "Current Password Confirmation"
+            %i (現在使っているパスワードを入力して下さい)
+          .section
+          .actions.btn.col.right
+            = f.submit "上記の内容でプロフィール更新"
+          .section
+    .row.contents_box_edit_last.trans_bg_grey
+      .col.s12
+        = "アカウント削除"
+      .col.s12
+        .btn.red
+          #{button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "全ての記録が消え、データの復帰ができません。それでもよろしいですか？" }, method: :delete}
+        .section
+        .section
+      .col.s12
+        .btn.blue
+          = link_to "更新せずに戻る", :back
+        .section

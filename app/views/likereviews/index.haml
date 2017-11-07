@@ -1,0 +1,65 @@
+= render 'shared/navBar'
+.container
+  .row.pt_20.fs_50
+    .col.s12.z-depth-3.trans_bg_grey.text_wh.center-align
+      = "#{@user.nickname}" +"の"
+      %br/
+      = "評価したレビュー一覧"
+    .col.s12.fs_26.center-align
+      = paginate(@userLikeReviews)
+  - @userLikeReviews.each do |userLikeReview|
+    .row.product_show_recent.each_review.trans_bg_grey.text_wh
+      .col.s12.z-depth-3.trans_bg_l-grey
+        .col.s12.waves-effect
+          = link_to user_path(userLikeReview.user.id) do
+            .col.s2
+              .section
+              = image_tag userLikeReview.user.avatar, class: "circle inreview_size"
+            .col.s10
+              .section
+              .col.s12.fs_40.left-align
+                = userLikeReview.user.nickname
+              .col.s12.fs_20.left-align
+                = userLikeReview.created_at
+                .section
+      .col.s12.left-align
+        = link_to product_path (userLikeReview.review.product.id) do
+          .col.s12.fs_50.truncate.waves-effect.waves-light
+            = userLikeReview.review.product.productName
+        .col.s12.fs_.fs_30
+          = userLikeReview.review.product.dominant
+        .col.s12
+          .col.s6.fs_20
+            - if userLikeReview.review.rate <=  10.0 && userLikeReview.review.rate >= 0.1
+              %span.right.rate.rate0-5
+            -elsif userLikeReview.review.rate <= 20.0 && userLikeReview.review.rate >= 10.1
+              %span.right.rate.rate1
+            -elsif userLikeReview.review.rate <= 30.0 && userLikeReview.review.rate >= 20.1
+              %span.right.rate.rate1-5
+            -elsif userLikeReview.review.rate <= 40.0 && userLikeReview.review.rate >= 30.1
+              %span.right.rate.rate2
+            -elsif userLikeReview.review.rate <= 50.0 && userLikeReview.review.rate >= 40.1
+              %span.right.rate.rate2-5
+            -elsif userLikeReview.review.rate <= 60.0 && userLikeReview.review.rate >= 50.1
+              %span.right.rate.rate3
+            -elsif userLikeReview.review.rate <= 70.0 && userLikeReview.review.rate >= 60.1
+              %span.right.rate.rate3-5
+            -elsif userLikeReview.review.rate <= 80.0 && userLikeReview.review.rate >= 70.1
+              %span.right.rate.rate4
+            -elsif userLikeReview.review.rate <= 90.0 && userLikeReview.review.rate >= 80.1
+              %span.right.rate.rate4-5
+            -elsif userLikeReview.review.rate <= 100.0 && userLikeReview.review.rate >= 90.1
+              %span.right.rate.rate5
+            -else
+              %span.right.rate.rate0
+          .col.s6.fs_50
+            = ": " + "#{userLikeReview.review.rate}" + "/100pts"
+      .col.s12.fs_30.left-align
+        .divider
+        = simple_format(userLikeReview.review.review)
+      -if userLikeReview.review.reviewImage.present?
+        .col.s12
+          = image_tag(userLikeReview.review.reviewImage, class: "review_image_size")
+      .col.s12.fs_20.right-align
+        .section
+        = "#{userLikeReview.review.likereviews_counts}" + "人がこのレビューを高く評価しています"

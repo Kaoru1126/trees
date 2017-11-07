@@ -10,10 +10,16 @@ class FavproductsController < ApplicationController
   end
 
   def destroy
-  favpro = Favproduct.find(params[:id])
+    favpro = Favproduct.find(params[:id])
     if favpro.destroy
       redirect_to product_path(favpro.product_id)
     end
+  end
+
+  def index
+    @user = User.find(params[:user_id])
+    userFavproducts = Favproduct.includes(:product).where("user_id = ?", params[:user_id])
+    @userFavproducts = userFavproducts.order("created_at DESC").page(params[:page]).per(10)
   end
 
 
@@ -22,6 +28,5 @@ class FavproductsController < ApplicationController
   def favproduct_params
     params.permit(:user_id, :product_id)
   end
-
 
 end

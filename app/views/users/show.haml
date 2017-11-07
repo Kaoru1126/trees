@@ -1,6 +1,5 @@
 = render 'shared/navBar'
 .show_top_img_place
-  / # = image_tag @user.cover , class: "show_top_img_size pt_14"
   .container.show_absolute.show_posi_detail
     .row
       .col.s12.card.z-depth-3.trans_bg_grey.text_wh.center-align
@@ -9,46 +8,6 @@
           = image_tag @user.avatar, class: "menu_icon"
         .col.s12.fs_60
           = @user.nickname
-    .row
-      .col.s12.z-depth-3.trans_bg_grey.text_wh.center-align
-        .col.s12.fs_60
-          = "★★★★☆ : 4.0"
-          .divider
-        .col.s12.fs_50
-          = @user.nickname
-          .divider
-        .col.s12.fs_40
-          = @user.nickname
-          .divider
-        .col.s12.fs_40
-          .col.s4
-            %i.fa.fa-tree
-          .col.s4
-            %i.fa.fa-heart
-          .col.s4
-            %i.fa.fa-comments-o
-              = ":" + "#{current_user.reviews.count}"
-    .row
-      .col.s12.z-depth-3.trans_bg_grey.text_wh.center-align
-        .col.s12.fs_60
-          = "about me"
-          .divider
-        .col.s12.fs_40.left-align
-          = @user.intro
-        .col.s12
-    .row
-      .col.right
-        = link_to new_product_review_path (@user) do
-          .i.material-icons.cyan.btn-floating.pulse.edit.btn_detail edit
-.bg_lg.c_pw
-  .container
-    .row
-      .col.s12.center-align.fs_60.bold
-        = "最近のレビュー"
-        .divider
-        .col.s12
-          .col.s3
-          .col.s3
-
-
-
+    = render 'shared/userStatsAndIntro'
+    = render 'shared/userMostRatedReviews'
+    = render 'shared/userMostRecentReviews'

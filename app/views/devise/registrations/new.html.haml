@@ -1,28 +1,67 @@
-%h2 Sign up
-.container
-  .row
-    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-      = devise_error_messages!
+%body#user_signup
+  .container.text_wh
+    .row.user_new_row
       .col.s12
-        = f.label :email
-        %br/
-        = f.email_field :email, autofocus: true
-      / .col.s12
-      /   = f.label :nickname
-      /   %br/
-      /   = f.email_field :nickname
-      .col.s12
-        = f.label :password
-        - if @minimum_password_length
-          %em
-            (#{@minimum_password_length} characters minimum)
-        %br/
-        = f.password_field :password, autocomplete: "off"
-      .col.s12
-        = f.label :password_confirmation
-        %br/
-        = f.password_field :password_confirmation, autocomplete: "off"
-      .actions.btn.waves-effect
-        = f.submit "Sign up"
-    .section
-    = render "devise/shared/links"
+        .row
+          .col.s12.center-align.trans_bg_grey
+            %h2.user_new_tagline
+              = "大麻の話をしよう"
+              %br/
+              = "本当の価値を伝えよう"
+        .row.trans_bg_grey
+          .col.s12.center-align.fs_30.bold
+            .section
+            = "アカウント作成"
+            .section
+          .col.s12.bold.fs_20.center-align
+            = "※ここで設定したもの（e-mailやニックネーム等）は、後でも変更が可能です"
+            .section
+            .divider
+          .inputBox
+            = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+              = devise_error_messages!
+              .col.s12
+                .field
+                  %br/
+                  = f.email_field :email, autofocus: true, :class => "user_new_email_input", :placeholder => "E-mail"
+              .col.s12.bold.fs_20
+                = "次回ログイン時に使用します、SNS認証の機能は...お待ち下さい"
+              .col.s12
+                .field
+                  %br/
+                  = f.text_field :nickname, maxlength: "14", :placeholder => "Nickname", "data-length" => "14"
+              .col.s12.bold.fs_20
+                = "レビュー投稿の際に、公開される名前です"
+              .col.s12
+                .field
+                  - if @minimum_password_length
+                    %em
+                    / (パスワードは半角#{@minimum_password_length} 文字以上が必要です)
+                %br/
+                = f.password_field :password, autocomplete: "off", :placeholder => "Password"
+              .col.s12.bold.fs_20
+                = "パスワードは半角#{@minimum_password_length} 文字以上が必要です"
+              .col.s12
+                .field
+                  %br/
+                  = f.password_field :password_confirmation, autocomplete: "off", :placeholder => "Password Confirmation"
+              .col.s12.bold.fs_20
+                = "パスワードの確認として、上記と同じものを入力して下さい"
+                .section
+                .section
+              .col.s12
+              .col.s12.bold.fs_20
+                = "プロフィール画像"
+                .section
+                .field.btn.user_new_avatar_input
+                  = f.file_field :avatar, :class => "user_new_avatar_input"
+                .section
+              .col.s12
+                .btn
+                  = f.submit "Sign up", class: "signUp"
+                .section
+              .col.s12.fs_30
+                = "すでにアカウントをお持ちですか？"
+              .col.s12.fs_30
+                = render "devise/shared/links"
+                .section

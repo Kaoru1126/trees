@@ -79,6 +79,12 @@ input[type=text]:not(.browser-default), {
   font-size: 6rem;
 }
 
+input[type=text]:not(.browser-default).searchTop {
+  height: 8rem;
+  font-size: 6rem;
+}
+
+
 // ボタンのcss
 .col.s2.search_btn_box {
   font-size: 6rem;
@@ -107,6 +113,14 @@ input[type=text]:not(.browser-default), {
   background: rgba(0,0,0, 0.6);
 }
 
+.trans_bg_l-grey {
+  background: rgba(200, 200, 200, 0.3);
+}
+
+.trans_bg_green {
+  background: rgba(11,97,56, 0.6);
+}
+
 .text_wh {
   color:  #ffffff;
 }
@@ -119,4 +133,86 @@ input[type=text]:not(.browser-default), {
 
 .link_to_show {
   color: black;
+}
+
+// =====星の評価===============
+//レート評価 変数
+$starFull: 60px;//星1個の幅
+$starHalf: $starFull / 2;//星半分（0.5）の幅
+$starNone: 0px;//星ゼロ
+
+$rate0-5: $starHalf;
+$rate0-5: $starHalf; //星0.5
+$rate1: $starFull;//星1
+$rate1-5: $starFull + $starHalf;//星1.5
+$rate2: $starFull * 2;//星2
+$rate2-5: ($starFull * 2) + $starHalf;//星2.5
+$rate3: $starFull * 3;//星3
+$rate3-5: ($starFull * 3) + $starHalf;//星3.5
+$rate4: $starFull * 4;//星4
+$rate4-5: ($starFull * 4) + $starHalf;//星4.5
+$rate5 :$starFull * 5;//星5
+
+.rate{
+  position: relative;
+  display: inline-block;
+  width: $starFull * 5;
+  height: $starFull;
+  font-size: $starFull;
+  &:before,&:after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '★★★★★';
+    display: inline-block;
+    height: $starFull;
+    line-height: $starFull;
+  }
+  &:before{
+  color: $blankStar;
+  }
+  &:after{
+  color: #ffa500;
+  overflow: hidden;
+  white-space: nowrap;//これがないと改行されて星の半分（0.5）が表現できなくなる
+  }
+}
+.rate0:after{//星0
+  width: $starNone;
+}
+.rate0-5:after{//星0.5
+  width: $rate0-5;
+}
+.rate1:after{//星1
+  width: $rate1;
+}
+.rate1-5:after{//星1.5
+  width: $rate1-5;
+}
+.rate2:after{//星2
+  width: $rate2;
+}
+.rate2-5:after{//星2.5
+  width: $rate2-5;
+}
+.rate3:after{//星3
+  width: $rate3;
+}
+.rate3-5:after{//星3.5
+  width: $rate3-5;
+}
+.rate4:after{//星4
+  width: $rate4;
+}
+.rate4-5:after{//星4.5
+  width: $rate4-5;
+}
+.rate5:after{//星5
+  width: $rate5;
+}
+
+
+.wrap{
+  width: 80px;
+  margin: 0 auto;
 }

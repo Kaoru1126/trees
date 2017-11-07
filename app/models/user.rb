@@ -8,6 +8,8 @@ class User < ApplicationRecord
   # アソシエーション
   has_many :reviews
   has_many :favproducts
+  has_many :watchproducts
+  has_many :likereviews
 
   #アップローダー
   mount_uploader :avatar, AvatarUploader

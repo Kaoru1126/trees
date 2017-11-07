@@ -1,23 +1,39 @@
-// body {
-//     position: relative;
-//     left: 0;
-//     overflow-x: hidden;
-// }
+body {
+  background-color: $p-white;
+}
 
 h1 {
   font-size: 36px;
   font-weight: bold;
-}
+  }
 
 a:link {
   color: white;
-}
+  }
 a:visited {
   color: white
+  }
+
+.divider_BK {
+  height: 1px;
+  overflow: hidden;
+  background-color: #2d2d2d;
 }
 
 .pt_14 {
   padding-top:140px;
+}
+
+.pt_20 {
+  padding-top:200px;
+}
+
+.pt_28 {
+  padding-top:280px;
+}
+
+.mt_8 {
+  margin-top: 80px
 }
 
 .container.under_navbar{
@@ -46,4 +62,16 @@ a:visited {
 // adding color class
 .neg_btn_color {
   background-color: $close_pink;
+}
+
+.hybrid_c {
+  background-color: $hyb;
+}
+
+.idh_c {
+  background-color: $idh;
+}
+
+.sdh_c {
+  background-color: $sdh;
 }

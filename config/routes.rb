@@ -15,6 +15,15 @@ Rails.application.routes.draw do
   end
 
   resources :favproducts, only: [:index, :create, :destroy]
+  resources :watchproducts, only: [:index, :create, :destroy]
+  resources :likereviews, only: [:index, :create, :destroy]
+
+  resources :users, only: [:index] do
+    resources :favproducts, only: [:index, :create, :destroy]
+    resources :watchproducts, only: [:index, :create, :destroy]
+    resources :likereviews, only: [:index, :create, :destroy]
+    resources :reviews, only: [:index]
+  end
 
 end
 

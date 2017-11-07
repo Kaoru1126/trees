@@ -11,15 +11,18 @@
       .col.s12.fs_60.center-align
         = current_user.nickname
       .col.s12.fs_40.center-align
-        .col.s4
-          %i.fa.fa-tree
-            = current_user.reviews.count
-        .col.s4
-          %i.fa.fa-heart
-            = current_user.reviews.count
-        .col.s4
-          %i.fa.fa-comments-o
-            = ":" + "#{current_user.reviews.count}"
+        .col.s4.waves-effect.waves-light
+          = link_to user_watchproducts_path(current_user) do
+            %i.fa.fa-tree
+              = ": " + "#{current_user.watchproducts.count}"
+        .col.s4.waves-effect.waves-light
+          = link_to user_favproducts_path(current_user) do
+            %i.fa.fa-heart
+              = ": " + "#{current_user.favproducts.count}"
+        .col.s4.waves-effect.waves-light
+          = link_to user_reviews_path(current_user) do
+            %i.fa.fa-comments-o
+              = ": " + "#{current_user.reviews.count}"
     .divider
   - else
     .row.text_wh
@@ -44,29 +47,39 @@
     .divider
   .row
     .col.s12.side_menu_items
-      .col.s12
-        = link_to "ホーム", root_path
-        .divider
-      .col.s12
-        = link_to "ストレインを探す", products_path
-        .divider
-      .col.s12
-        = link_to "レビューを書く", search_products_path
-        .divider
-      .col.s12
+      = link_to root_path do
+        .col.s12.waves-effect.waves-light
+          %i.fa.fa-home
+            = "ホーム"
+          .divider
+      = link_to products_path do
+        .col.s12.waves-effect.waves-light
+          %i.fa.fa-search
+            = "ストレインを探す"
+          .divider
+      = link_to search_products_path do
+        .col.s12.waves-effect.waves-light
+          %i.fa.fa-pencil-square-o
+            = "レビューを書く"
+          .divider
+      .col.s12.waves-effect.waves-light
         - if user_signed_in?
-          = link_to "マイページ", user_path(current_user)
+          = link_to user_path(current_user) do
+            %i.fa.fa-id-card-o
+              = "マイページ"
           .divider
   - if user_signed_in?
     .row
-      .col.s5.btn.waves-effect.left.menu_btn_text
-        = link_to "プロフィール編集", edit_user_registration_path
-      .col.s5.btn.waves-effect.right.neg_btn_color.menu_btn_text
-        = link_to "ログアウト", destroy_user_session_path, method: :delete
+      .col.s12
+        .col.s5.btn.waves-effect.left.menu_btn_text
+          = link_to "プロフィール編集", edit_user_registration_path
+        .col.s5.btn.waves-effect.right.neg_btn_color.menu_btn_text
+          = link_to "ログアウト", destroy_user_session_path, method: :delete
   - else
     .row
-      .col.s5.btn.waves-effect.left.menu_btn_text
-        = link_to "サインアップ", new_user_registration_path
-      .col.s5.btn.waves-effect.right.menu_btn_text
-        = link_to "ログイン", new_user_session_path
+      .col.s12
+        .col.s5.btn.waves-effect.left.menu_btn_text
+          = link_to "サインアップ", new_user_registration_path
+        .col.s5.btn.waves-effect.right.menu_btn_text
+          = link_to "ログイン", new_user_session_path
 
