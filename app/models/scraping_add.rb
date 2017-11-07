@@ -23,8 +23,6 @@ class Scraping_add
         dom.each do |domi|
           dominant = domi.get_attribute('alt')
 
-          # ignored?
-
       end
   end
 

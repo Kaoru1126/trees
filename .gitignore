@@ -13,7 +13,7 @@
 !/log/.keep
 !/tmp/.keep
 public/
-scraping_add.rb
+/models/scraping_add.rb
 
 # Ignore Byebug command history file.
 .byebug_history
