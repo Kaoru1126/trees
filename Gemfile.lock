@@ -116,6 +116,7 @@ GEM
     haml (5.0.2)
       temple (>= 0.8.0)
       tilt
+    hashie (3.5.6)
     html2haml (2.2.0)
       erubis (~> 2.7.0)
       haml (>= 4.0, < 6)
@@ -177,6 +178,16 @@ GEM
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
     ntlm-http (0.1.1)
+    oauth (0.5.3)
+    omniauth (1.7.1)
+      hashie (>= 3.4.6, < 3.6.0)
+      rack (>= 1.6.2, < 3)
+    omniauth-oauth (1.1.0)
+      oauth
+      omniauth (~> 1.0)
+    omniauth-twitter (1.4.0)
+      omniauth-oauth (~> 1.1)
+      rack
     orm_adapter (0.5.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
@@ -295,6 +306,7 @@ DEPENDENCIES
   mechanize
   mini_magick
   mysql2 (>= 0.3.18, < 0.5)
+  omniauth-twitter
   pry-rails
   puma (~> 3.0)
   rails (~> 5.0.4)

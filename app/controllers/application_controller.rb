@@ -14,11 +14,11 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :avatar])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :avatar, :username])
   end
 
   def configure_permitted_parameters_edit
-    devise_parameter_sanitizer.permit(:account_update, keys: [:nickname, :avatar, :intro])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:nickname, :avatar, :intro, :username])
   end
 
   # def set_request_from
