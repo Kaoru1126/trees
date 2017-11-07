@@ -32,3 +32,5 @@ scraping_dominant.rb
 scraping_hybrid.rb
 scraping_strain.rb
 scraping_thc.rb
+devise.rb
+settings.yml

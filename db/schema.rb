@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171031095504) do
+ActiveRecord::Schema.define(version: 20171107171717) do
 
   create_table "dominants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "dominant"
@@ -91,6 +91,9 @@ ActiveRecord::Schema.define(version: 20171031095504) do
     t.string   "nickname"
     t.string   "avatar"
     t.text     "intro",                  limit: 65535
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "username"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
