@@ -14,9 +14,7 @@
 !/tmp/.keep
 public/
 
-models/scraping_add.rb
-models/scraping_dominant.rb
-app/models/scraping_hybrid
+
 
 # Ignore Byebug command history file.
 .byebug_history
@@ -28,3 +26,9 @@ config/settings.local.yml
 config/settings/*.local.yml
 config/environments/*.local.yml
 
+# added
+scraping_add.rb
+scraping_dominant.rb
+scraping_hybrid.rb
+scraping_strain.rb
+scraping_thc.rb
