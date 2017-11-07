@@ -1,0 +1,31 @@
+.top {
+  margin-top: 140px;
+}
+
+.top_img_size {
+  width: 725px;
+  border-radius: 10px;
+}
+
+.top_three_img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+}
+
+.pr_3.top_three_star {
+  // padding-right: 30px;
+}
+
+.col.s12.top_buttons {
+  display: flex;
+  justify-content: space-around;
+  }
+
+a:link .top_productLink {
+  color: $topLinkable;
+  }
+
+a:visited .top_productLink {
+  color: $topLinkable;
+  }

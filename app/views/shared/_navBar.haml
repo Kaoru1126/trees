@@ -1,0 +1,10 @@
+= render 'shared/sp_menu'
+= render 'layouts/flash'
+.navbar_area.flex.space_btw.black
+  .sp_menu_btn.waves-effect
+    = image_tag "sp_menu_btn.jpg", class: "sp_btn_image"
+  .logo_area.waves-effect.waves-light
+    = link_to root_path do
+      = image_tag "logo_kari2.png", class: "logo_image"
+  = link_to products_path do
+    .i.material-icons.search.modal-trigger.waves-effect.waves-light search

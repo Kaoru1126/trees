@@ -1,0 +1,22 @@
+= render 'shared/navBar'
+.bg.c_pw
+  .container.under_navbar
+    .section
+    .row
+      - @all.each do |product|
+        .col.s6.card.z-depth-3
+          .col.s6.grey
+            = image_tag product.productImage, class: "circle responsive-img"
+            .col.s12.orange.fs_20
+              = "★★★★☆ : 4.0"
+          .col.s6.green
+            .col.s12.blue.fs_36
+              = product.productName
+            .col.s12.yellow
+              = product.dominant
+            .col.s12.blue
+              = "number of total reviews"
+  .container
+    .row
+      .col.s12.fs_36.page.center-align
+        = paginate(@all)

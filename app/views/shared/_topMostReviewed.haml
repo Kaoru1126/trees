@@ -1,0 +1,94 @@
+.container
+  .divider_BK
+  .section
+  .row
+    = link_to product_path (@productHavingMostReview.id) do
+      .col.s12.fs_60.center-align.bold.top_productLink.waves-effect
+        = @productHavingMostReview.productName
+    .col.s12.fs_30.center-align.bold
+      = @productHavingMostReview.dominant
+    .col.s12
+      .section
+      .col.s6.fs_20
+        - if @proHavingRevAvrScore <=  10.0 && @proHavingRevAvrScore >= 0.1
+          %span.right.rate.rate0-5
+        -elsif @proHavingRevAvrScore <= 20.0 && @proHavingRevAvrScore >= 10.1
+          %span.right.rate.rate1
+        -elsif @proHavingRevAvrScore <= 30.0 && @proHavingRevAvrScore >= 20.1
+          %span.right.rate.rate1-5
+        -elsif @proHavingRevAvrScore <= 40.0 && @proHavingRevAvrScore >= 30.1
+          %span.right.rate.rate2
+        -elsif @proHavingRevAvrScore <= 50.0 && @proHavingRevAvrScore >= 40.1
+          %span.right.rate.rate2-5
+        -elsif @proHavingRevAvrScore <= 60.0 && @proHavingRevAvrScore >= 50.1
+          %span.right.rate.rate3
+        -elsif @proHavingRevAvrScore <= 70.0 && @proHavingRevAvrScore >= 60.1
+          %span.right.rate.rate3-5
+        -elsif @proHavingRevAvrScore <= 80.0 && @proHavingRevAvrScore >= 70.1
+          %span.right.rate.rate4
+        -elsif @proHavingRevAvrScore <= 90.0 && @proHavingRevAvrScore >= 80.1
+          %span.right.rate.rate4-5
+        -elsif @proHavingRevAvrScore <= 100.0 && @proHavingRevAvrScore >= 90.1
+          %span.right.rate.rate5
+        -else
+          %span.right.rate.rate0
+      .col.s6.fs_50
+        = ": " + "#{@proHavingRevAvrScore}" + "/100pts"
+        .section
+  .row
+    .fs_60.center-align.z-depth-3
+      = link_to image_tag(@productHavingMostReview.productImage, {:class => "top_img_size"}),product_path(@productHavingMostReview.id)
+  .row
+    - if user_signed_in? #ユーザーログインしてる
+      .col.s12.top_buttons
+        -if haveIWatchedProductTop?(@productHavingMostReview.id) #Watchしてる時の処理
+          .col.s3
+            = link_to watchproduct_path(current_user.watchproducts.find_by(product_id:@productHavingMostReview.id)), method: :delete do
+              .btn-floating.btn_detail.grey.unwatchTrigger{user: {id: current_user.id}, product: {id: @productHavingMostReview.id}}
+                %i.fa.fa-tree.for_tap.font_margin
+        -else #watchしてない時の処理
+          .col.s3.right
+            = link_to new_product_review_path (@productHavingMostReview.id) do
+              .btn-floating.btn_detail.pulse.green.watchTrigger{user: {id: current_user.id}, product: {id: @productHavingMostReview.id}}
+                %i.fa.fa-tree.for_tap.font_margin
+        -if haveIFavedProductTop?(@productHavingMostReview.id) #favしてる時の処理
+          .col.s3
+            = link_to favproduct_path(current_user.favproducts.find_by(product_id:@productHavingMostReview.id)), method: :delete do
+              .btn-floating.btn_detail.grey.unfavTrigger{user: {id: current_user.id}, product: {id: @productHavingMostReview.id}}
+                %i.fa.fa-heart.for_tap.font_margin
+        -else #current_user.favproducts.find_by(product_id: @product) favしてない場合の処理
+          .col.s3
+            = link_to new_product_review_path (@productHavingMostReview.id) do
+              .btn-floating.btn_detail.pulse.pink.favTrigger{user: {id: current_user.id}, product: {id: @productHavingMostReview.id}}
+                %i.fa.fa-heart.for_tap.font_margin
+        .col.s3
+          = link_to new_product_review_path (@productHavingMostReview.id) do
+            .btn-floating.btn_detail.pulse.orange
+              %i.fa.fa-pencil-square-o.for_tap.font_margin
+    - else #ユーザーログインしてない
+      .col.s12.top_buttons
+        .col.right
+          = link_to new_product_review_path (@productHavingMostReview.id) do
+            .btn-floating.btn_detail.grey
+              %i.fa.fa-tree.for_tap.font_margin
+        .col.right
+          = link_to new_user_session_path do
+            .btn-floating.btn_detail.grey
+              %i.fa.fa-heart.for_tap.font_margin
+        .col.right
+          = link_to new_user_session_path do
+            .btn-floating.btn_detail.grey
+              %i.fa.fa-pencil-square-o.for_tap.font_margin
+  .row
+    .col.s12.fs_50.center-align
+      .col.s4.green
+        %i.fa.fa-tree
+          = ": " + "#{@productHavingMostReview.watch_counts}"
+      .col.s4.pink
+        %i.fa.fa-heart
+          = ": " + "#{@productHavingMostReview.fav_counts}"
+      .col.s4.orange
+        %i.fa.fa-comments-o
+          = ": " + "#{@productHavingMostReview.review_counts}"
+  .divider_BK
+  .section

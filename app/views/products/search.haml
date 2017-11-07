@@ -1,0 +1,25 @@
+= render 'shared/navBar'
+.bg.c_pw
+  .container.under_navbar
+  .section
+  .container
+    .row
+      .input-field.col.s12
+        = form_tag('/products/search', method: :get) do
+          %input.searchBar.col.s10{:name => "keyword", :placeholder => "ストレインの検索", :type => "text", :value => "", :class => "searchTop"}
+          %input.btn-large.i.material-icons.col.s2.search_btn_box{:type => "submit", :name => "action", :value => "search"}
+    .row
+      .col.s12.fs_30.center-align
+        - if @path.is('products#search')
+          %span.bold "#{params[:keyword]}"
+          %br/
+          を含むストレインは#{@numberOfStrains}件みつかりました。
+  .container
+    .row
+      .col.s12.fs_26.center-align
+        = paginate(@allStrains)
+    = render 'shared/eachProductCard'
+  .container
+    .row
+      .col.s12.fs_26.center-align
+        = paginate(@allStrains)

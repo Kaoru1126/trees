@@ -1,0 +1,48 @@
+.container
+  .divider_BK
+  - @mostVotedRevs.each do |mostVotedRev|
+    .section
+    .row.center-align
+      = link_to product_path (mostVotedRev.product.id) do
+        .col.s12.fs_60.center-align.bold.top_productLink.waves-effect
+          = mostVotedRev.product.productName
+      .col.s12.fs_30.center-align.bold
+        = mostVotedRev.product.dominant
+      .col.s12.center-align
+        .section
+        = link_to image_tag(mostVotedRev.product.productImage, {:class => "top_three_img"}),product_path(mostVotedRev.product.id)
+        .section
+      .col.s12
+        .col.s6.fs_20.pr_3.top_three_star
+          - if mostVotedRev.rate <=  10.0 && mostVotedRev.rate >= 0.1
+            %span.right.rate.rate0-5
+          -elsif mostVotedRev.rate <= 20.0 && mostVotedRev.rate >= 10.1
+            %span.right.rate.rate1
+          -elsif mostVotedRev.rate <= 30.0 && mostVotedRev.rate >= 20.1
+            %span.right.rate.rate1-5
+          -elsif mostVotedRev.rate <= 40.0 && mostVotedRev.rate >= 30.1
+            %span.right.rate.rate2
+          -elsif mostVotedRev.rate <= 50.0 && mostVotedRev.rate >= 40.1
+            %span.right.rate.rate2-5
+          -elsif mostVotedRev.rate <= 60.0 && mostVotedRev.rate >= 50.1
+            %span.right.rate.rate3
+          -elsif mostVotedRev.rate <= 70.0 && mostVotedRev.rate >= 60.1
+            %span.right.rate.rate3-5
+          -elsif mostVotedRev.rate <= 80.0 && mostVotedRev.rate >= 70.1
+            %span.right.rate.rate4
+          -elsif mostVotedRev.rate <= 90.0 && mostVotedRev.rate >= 80.1
+            %span.right.rate.rate4-5
+          -elsif mostVotedRev.rate <= 100.0 && mostVotedRev.rate >= 90.1
+            %span.right.rate.rate5
+          -else
+            %span.right.rate.rate0
+        .col.s6.fs_50.left-align
+          = ": " + "#{mostVotedRev.rate}" + "/100pts"
+      = link_to user_path (mostVotedRev.user.id) do
+        .col.s12.fs_30.top_productLink.waves-effect
+          = "Reviewed by " + "#{mostVotedRev.user.nickname}"
+        .section
+      .col.s12.fs_40.center-align
+        = mostVotedRev.review.truncate(90)
+  .divider_BK
+  .section

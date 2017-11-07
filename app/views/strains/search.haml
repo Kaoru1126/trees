@@ -1,0 +1,39 @@
+= render 'shared/navBar'
+.bg.c_pw
+  .container.under_navbar
+  .section
+  .container
+    .row
+      .input-field.col.s12
+        = form_tag('/strains/search', method: :get) do
+          %input.searchBar.col.s10{:name => "keyword", :placeholder => "ストレインの検索", :type => "text", :value => ""}
+          %input.btn-large.i.material-icons.col.s2.search_btn_box{:type => "submit", :name => "action", :value => "search"}
+    .row
+      .col.s12.fs_30.center-align
+        - if @path.is('strains#search')
+          %span.bold "#{params[:keyword]}"
+          %br/
+          を含むストレインは#{@numberOfStrains}件みつかりました。
+  .container
+    .row
+      .col.s12.fs_30.center-align
+        = paginate(@allStrains)
+    .row
+      - @allStrains.each do |product|
+        .col.s6.z-depth-3.center-align.card-panel.hoverable
+          .col.s12
+            = image_tag product.productImage, class: "circle index_img_size"
+          .col.s12.fs_30
+            .col.s7.left
+              = "★★★★☆:4.0"
+            .col.s5.right
+              = "✎ (20)"
+          .col.s12
+            .col.s12.fs_26.dominant
+              = product.dominant
+            .col.s12.fs_40.truncate.bold
+              = product.productName
+  .container
+    .row
+      .col.s12.fs_26.center-align
+        = paginate(@allStrains)

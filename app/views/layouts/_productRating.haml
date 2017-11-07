@@ -1,0 +1,23 @@
+/ _productNewShowのビューにpartialで埋め込みたいが、stacklevel too deepになる
+/ - if @productScore <=  10.0 && @productScore >= 0.1
+/   %span.right.rate.rate0-5
+/ -elsif @productScore <= 20.0 && @productScore >= 10.1
+/   %span.right.rate.rate1
+/ -elsif @productScore <= 30.0 && @productScore >= 20.1
+/   %span.right.rate.rate1-5
+/ -elsif @productScore <= 40.0 && @productScore >= 30.1
+/   %span.right.rate.rate2
+/ -elsif @productScore <= 50.0 && @productScore >= 40.1
+/   %span.right.rate.rate2-5
+/ -elsif @productScore <= 60.0 && @productScore >= 50.1
+/   %span.right.rate.rate3
+/ -elsif @productScore <= 70.0 && @productScore >= 60.1
+/   %span.right.rate.rate3-5
+/ -elsif @productScore <= 80.0 && @productScore >= 70.1
+/   %span.right.rate.rate4
+/ -elsif @productScore <= 90.0 && @productScore >= 80.1
+/   %span.right.rate.rate4-5
+/ -elsif @productScore <= 100.0 && @productScore >= 90.1
+/   %span.right.rate.rate5
+/ -else
+/   %span.right.rate.rate0

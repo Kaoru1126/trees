@@ -1,0 +1,129 @@
+= render 'shared/navBar'
+.container
+  .row.pt_20.fs_50
+    .col.s12.z-depth-3.trans_bg_grey.text_wh.center-align
+      = "#{@user.nickname}" +"の"
+      %br/
+      = "気になっているストレイン一覧"
+    .col.s12.fs_26.center-align
+      = paginate(@userWatchproducts)
+  .row
+    - @userWatchproducts.each do |userWatch|
+      = link_to product_path (userWatch.product.id) do
+        -if userWatch.product.dominant == "Sativa"
+          .col.s6.z-depth-3.center-align.card-panel.hoverable.link_to_show.waves-effect.amber
+            .col.s12
+              = image_tag userWatch.product.productImage, class: "circle index_img_size"
+            .col.s12.fs_30
+              .col.s4.left
+                %i.fa.fa-tree
+                  = ": " + "#{userWatch.product.watch_counts}"
+              .col.s4.left
+                %i.fa.fa-heart
+                  = ": " + "#{userWatch.product.fav_counts}"
+              .col.s4.right
+                %i.fa.fa-comments-o
+                  = ": " + "#{userWatch.product.review_counts}"
+            .col.s12
+              .col.s12.fs_30.dominant
+                = userWatch.product.dominant
+              .col.s12.fs_50.truncate.bold
+                = userWatch.product.productName
+        -elsif userWatch.product.dominant == "Indica"
+          .col.s6.z-depth-3.center-align.card-panel.hoverable.link_to_show.waves-effect.light-blue
+            .col.s12
+              = image_tag userWatch.product.productImage, class: "circle index_img_size"
+            .col.s12.fs_30
+              .col.s4.left
+                %i.fa.fa-tree
+                  = ": " + "#{userWatch.product.watch_counts}"
+              .col.s4.left
+                %i.fa.fa-heart
+                  = ": " + "#{userWatch.product.fav_counts}"
+              .col.s4.right
+                %i.fa.fa-comments-o
+                  = ": " + "#{userWatch.product.review_counts}"
+            .col.s12
+              .col.s12.fs_30.dominant
+                = userWatch.product.dominant
+              .col.s12.fs_50.truncate.bold
+                = userWatch.product.productName
+        -elsif userWatch.product.dominant == "Hybrid"
+          .col.s6.z-depth-3.center-align.card-panel.hoverable.link_to_show.waves-effect.hybrid_c
+            .col.s12
+              = image_tag userWatch.product.productImage, class: "circle index_img_size"
+            .col.s12.fs_30
+              .col.s4.left
+                %i.fa.fa-tree
+                  = ": " + "#{userWatch.product.watch_counts}"
+              .col.s4.left
+                %i.fa.fa-heart
+                  = ": " + "#{userWatch.product.fav_counts}"
+              .col.s4.right
+                %i.fa.fa-comments-o
+                  = ": " + "#{userWatch.product.review_counts}"
+            .col.s12
+              .col.s12.fs_30.dominant
+                = userWatch.product.dominant
+              .col.s12.fs_50.truncate.bold
+                = userWatch.product.productName
+        -elsif userWatch.product.dominant == "Sativa Dominant Hybrid"
+          .col.s6.z-depth-3.center-align.card-panel.hoverable.link_to_show.waves-effect.sdh_c
+            .col.s12
+              = image_tag userWatch.product.productImage, class: "circle index_img_size"
+            .col.s12.fs_30
+              .col.s4.left
+                %i.fa.fa-tree
+                  = ": " + "#{userWatch.product.watch_counts}"
+              .col.s4.left
+                %i.fa.fa-heart
+                  = ": " + "#{userWatch.product.fav_counts}"
+              .col.s4.right
+                %i.fa.fa-comments-o
+                  = ": " + "#{userWatch.product.review_counts}"
+            .col.s12
+              .col.s12.fs_30.dominant
+                = userWatch.product.dominant
+              .col.s12.fs_50.truncate.bold
+                = userWatch.product.productName
+        -elsif userWatch.product.dominant == "Indica Dominant Hybrid"
+          .col.s6.z-depth-3.center-align.card-panel.hoverable.link_to_show.waves-effect.idh_c
+            .col.s12
+              = image_tag userWatch.product.productImage, class: "circle index_img_size"
+            .col.s12.fs_30
+              .col.s4.left
+                %i.fa.fa-tree
+                  = ": " + "#{userWatch.product.watch_counts}"
+              .col.s4.left
+                %i.fa.fa-heart
+                  = ": " + "#{userWatch.product.fav_counts}"
+              .col.s4.right
+                %i.fa.fa-comments-o
+                  = ": " + "#{userWatch.product.review_counts}"
+            .col.s12
+              .col.s12.fs_30.dominant
+                = userWatch.product.dominant
+              .col.s12.fs_50.truncate.bold
+                = userWatch.product.productName
+        -else
+          .col.s6.z-depth-3.center-align.card-panel.hoverable.link_to_show.waves-effect
+            .col.s12
+              = image_tag userWatch.product.productImage, class: "circle index_img_size"
+            .col.s12.fs_30
+              .col.s4.left
+                %i.fa.fa-tree
+                  = ": " + "#{userWatch.product.watch_counts}"
+              .col.s4.left
+                %i.fa.fa-heart
+                  = ": " + "#{userWatch.product.fav_counts}"
+              .col.s4.right
+                %i.fa.fa-comments-o
+                  = ": " + "#{userWatch.product.review_counts}"
+            .col.s12
+              .col.s12.fs_30.dominant
+                = userWatch.product.dominant
+              .col.s12.fs_50.truncate.bold
+                = userWatch.product.productName
+  .row
+    .col.s12.fs_26.center-align
+      = paginate(@userWatchproducts)

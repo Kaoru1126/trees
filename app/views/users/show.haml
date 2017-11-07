@@ -1,0 +1,13 @@
+= render 'shared/navBar'
+.show_top_img_place
+  .container.show_absolute.show_posi_detail
+    .row
+      .col.s12.card.z-depth-3.trans_bg_grey.text_wh.center-align
+        .col.s12
+          .section
+          = image_tag @user.avatar, class: "menu_icon"
+        .col.s12.fs_60
+          = @user.nickname
+    = render 'shared/userStatsAndIntro'
+    = render 'shared/userMostRatedReviews'
+    = render 'shared/userMostRecentReviews'

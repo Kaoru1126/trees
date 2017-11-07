@@ -1,0 +1,57 @@
+.row.user_most_recent_reviews
+  .col.s12.z-depth-3.text_wh.center-align.fs_60.orange
+    = "最近のレビュー"
+- @recnetUserReviews.each do |recentUserReview|
+  .row.trans_bg_grey.text_wh
+    .col.s12.z-depth-3.trans_bg_l-grey.waves-effect
+      .col.s2
+        .section
+        = image_tag @user.avatar, class: "circle inreview_size"
+      .col.s10
+        .section
+        .col.s12.fs_40.left-align
+          = @user.nickname
+        .col.s12.fs_20.left-align
+          = recentUserReview.created_at
+          .section
+    .col.s12.left-align
+      = link_to product_path (recentUserReview.product.id) do
+        .col.s12.fs_50.truncate.waves-effect.waves-light
+          = recentUserReview.product.productName
+      .col.s12.fs_.fs_30
+        = recentUserReview.product.dominant
+      .col.s12
+        .col.s6.fs_20
+          - if recentUserReview.rate <=  10.0 && recentUserReview.rate >= 0.1
+            %span.right.rate.rate0-5
+          -elsif recentUserReview.rate <= 20.0 && recentUserReview.rate >= 10.1
+            %span.right.rate.rate1
+          -elsif recentUserReview.rate <= 30.0 && recentUserReview.rate >= 20.1
+            %span.right.rate.rate1-5
+          -elsif recentUserReview.rate <= 40.0 && recentUserReview.rate >= 30.1
+            %span.right.rate.rate2
+          -elsif recentUserReview.rate <= 50.0 && recentUserReview.rate >= 40.1
+            %span.right.rate.rate2-5
+          -elsif recentUserReview.rate <= 60.0 && recentUserReview.rate >= 50.1
+            %span.right.rate.rate3
+          -elsif recentUserReview.rate <= 70.0 && recentUserReview.rate >= 60.1
+            %span.right.rate.rate3-5
+          -elsif recentUserReview.rate <= 80.0 && recentUserReview.rate >= 70.1
+            %span.right.rate.rate4
+          -elsif recentUserReview.rate <= 90.0 && recentUserReview.rate >= 80.1
+            %span.right.rate.rate4-5
+          -elsif recentUserReview.rate <= 100.0 && recentUserReview.rate >= 90.1
+            %span.right.rate.rate5
+          -else
+            %span.right.rate.rate0
+        .col.s6.fs_50
+          = ": " + "#{recentUserReview.rate}" + "/100pts"
+    .col.s12.fs_30.left-align
+      .divider
+      = simple_format(recentUserReview.review)
+      -if recentUserReview.reviewImage.present?
+        .col.s12
+          = image_tag(recentUserReview.reviewImage, class: "review_image_size")
+    .col.s12.fs_30.right-align
+      .divider
+      = "#{recentUserReview.likereviews_counts}" + "人がこのレビューを評価しています"

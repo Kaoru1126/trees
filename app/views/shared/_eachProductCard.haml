@@ -1,0 +1,117 @@
+.row
+  - @allStrains.each do |product|
+    = link_to product_path (product.id) do
+      - if product.dominant == "Sativa"
+        .col.s6.z-depth-3.center-align.card-panel.hoverable.link_to_show.waves-effect.amber
+          .col.s12
+            = image_tag product.productImage, class: "circle index_img_size"
+          .col.s12.fs_30
+            .col.s4.left
+              %i.fa.fa-tree
+                = ": " + "#{product.watch_counts}"
+            .col.s4.left
+              %i.fa.fa-heart
+                = ": " + "#{product.fav_counts}"
+            .col.s4.right
+              %i.fa.fa-comments-o
+                = ": " + "#{product.review_counts}"
+          .col.s12
+            .col.s12.fs_30.dominant
+              = product.dominant
+            .col.s12.fs_50.truncate.bold
+              = product.productName
+      -elsif product.dominant == "Indica"
+        .col.s6.z-depth-3.center-align.card-panel.hoverable.link_to_show.waves-effect.light-blue
+          .col.s12
+            = image_tag product.productImage, class: "circle index_img_size"
+          .col.s12.fs_30
+            .col.s4.left
+              %i.fa.fa-tree
+                = ": " + "#{product.watch_counts}"
+            .col.s4.left
+              %i.fa.fa-heart
+                = ": " + "#{product.fav_counts}"
+            .col.s4.right
+              %i.fa.fa-comments-o
+                = ": " + "#{product.review_counts}"
+          .col.s12
+            .col.s12.fs_30.dominant
+              = product.dominant
+            .col.s12.fs_50.truncate.bold
+              = product.productName
+      -elsif product.dominant == "Hybrid"
+        .col.s6.z-depth-3.center-align.card-panel.hoverable.link_to_show.waves-effect.hybrid_c
+          .col.s12
+            = image_tag product.productImage, class: "circle index_img_size"
+          .col.s12.fs_30
+            .col.s4.left
+              %i.fa.fa-tree
+                = ": " + "#{product.watch_counts}"
+            .col.s4.left
+              %i.fa.fa-heart
+                = ": " + "#{product.fav_counts}"
+            .col.s4.right
+              %i.fa.fa-comments-o
+                = ": " + "#{product.review_counts}"
+          .col.s12
+            .col.s12.fs_30.dominant
+              = product.dominant
+            .col.s12.fs_50.truncate.bold
+              = product.productName
+      -elsif product.dominant == "Sativa Dominant Hybrid"
+        .col.s6.z-depth-3.center-align.card-panel.hoverable.link_to_show.waves-effect.sdh_c
+          .col.s12
+            = image_tag product.productImage, class: "circle index_img_size"
+          .col.s12.fs_30
+            .col.s4.left
+              %i.fa.fa-tree
+                = ": " + "#{product.watch_counts}"
+            .col.s4.left
+              %i.fa.fa-heart
+                = ": " + "#{product.fav_counts}"
+            .col.s4.right
+              %i.fa.fa-comments-o
+                = ": " + "#{product.review_counts}"
+          .col.s12
+            .col.s12.fs_30.dominant
+              = product.dominant
+            .col.s12.fs_50.truncate.bold
+              = product.productName
+      -elsif product.dominant == "Indica Dominant Hybrid"
+        .col.s6.z-depth-3.center-align.card-panel.hoverable.link_to_show.waves-effect.idh_c
+          .col.s12
+            = image_tag product.productImage, class: "circle index_img_size"
+          .col.s12.fs_30
+            .col.s4.left
+              %i.fa.fa-tree
+                = ": " + "#{product.watch_counts}"
+            .col.s4.left
+              %i.fa.fa-heart
+                = ": " + "#{product.fav_counts}"
+            .col.s4.right
+              %i.fa.fa-comments-o
+                = ": " + "#{product.review_counts}"
+          .col.s12
+            .col.s12.fs_30.dominant
+              = product.dominant
+            .col.s12.fs_50.truncate.bold
+              = product.productName
+      -else
+        .col.s6.z-depth-3.center-align.card-panel.hoverable.link_to_show.waves-effect
+          .col.s12
+            = image_tag product.productImage, class: "circle index_img_size"
+          .col.s12.fs_30
+            .col.s4.left
+              %i.fa.fa-tree
+                = ": " + "#{product.watch_counts}"
+            .col.s4.left
+              %i.fa.fa-heart
+                = ": " + "#{product.fav_counts}"
+            .col.s4.right
+              %i.fa.fa-comments-o
+                = ": " + "#{product.review_counts}"
+          .col.s12
+            .col.s12.fs_30.dominant
+              = product.dominant
+            .col.s12.fs_50.truncate.bold
+              = product.productName

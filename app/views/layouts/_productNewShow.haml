@@ -1,0 +1,95 @@
+.show_top_img_place
+  = image_tag @product.productImage, class: "show_top_img_size pt_14"
+  .container.show_absolute.show_posi_detail
+    .row
+      .col.s12.card.z-depth-3.trans_bg_grey.text_wh.center-align
+        .col.s12.fs_60
+          = @product.productName
+    .row.card.z-depth-3.trans_bg_grey.text_wh.center-align
+      .col.s12.fs_60.valign-wrapper
+        .col.s6.right-align
+          - if @productScore <=  10.0 && @productScore >= 0.1
+            %span.right.rate.rate0-5
+          -elsif @productScore <= 20.0 && @productScore >= 10.1
+            %span.right.rate.rate1
+          -elsif @productScore <= 30.0 && @productScore >= 20.1
+            %span.right.rate.rate1-5
+          -elsif @productScore <= 40.0 && @productScore >= 30.1
+            %span.right.rate.rate2
+          -elsif @productScore <= 50.0 && @productScore >= 40.1
+            %span.right.rate.rate2-5
+          -elsif @productScore <= 60.0 && @productScore >= 50.1
+            %span.right.rate.rate3
+          -elsif @productScore <= 70.0 && @productScore >= 60.1
+            %span.right.rate.rate3-5
+          -elsif @productScore <= 80.0 && @productScore >= 70.1
+            %span.right.rate.rate4
+          -elsif @productScore <= 90.0 && @productScore >= 80.1
+            %span.right.rate.rate4-5
+          -elsif @productScore <= 100.0 && @productScore >= 90.1
+            %span.right.rate.rate5
+          -else
+            %span.right.rate.rate0
+        .col.s6.score
+          - if @productScore.nan?
+            = ": 0 / 100"
+          - else
+            = ": " + "#{@productScore}" + " / 100"
+        .divider
+      .col.s12.fs_50
+        .divider
+        = @product.dominant
+        .divider
+      .col.s12.fs_40
+        = @product.thc
+        .divider
+      .col.s12.fs_50
+        .col.s4
+          %i.fa.fa-tree
+            = ": " + "#{@product.watch_counts}"
+        .col.s4
+          %i.fa.fa-heart
+            = ": " + "#{@product.fav_counts}"
+        .col.s4
+          %i.fa.fa-comments-o
+            = ": " + "#{@product.review_counts}"
+    .section
+    .row
+      - if user_signed_in? #ユーザーログインしてる
+        .col.s2.right
+          = link_to new_product_review_path (@product) do
+            .btn-floating.btn_detail.pulse.orange
+              %i.fa.fa-pencil-square-o.for_tap.font_margin
+        -if haveIFavedProduct?(@product) #favしてる時の処理
+          .col.s3.right
+            = link_to favproduct_path(current_user.favproducts.find_by(product_id:@product.id)), method: :delete do
+              .btn-floating.btn_detail.grey.unfavTrigger{user: {id: current_user.id}, product: {id: @product.id}}
+                %i.fa.fa-heart.for_tap.font_margin
+        -else #current_user.favproducts.find_by(product_id: @product) favしてない場合の処理
+          .col.s3.right
+            = link_to new_product_review_path (@product) do
+              .btn-floating.btn_detail.pulse.pink.favTrigger{user: {id: current_user.id}, product: {id: @product.id}}
+                %i.fa.fa-heart.for_tap.font_margin
+        -if haveIWatchedProduct?(@product) #Watchしてる時の処理
+          .col.s3.right
+            = link_to watchproduct_path(current_user.watchproducts.find_by(product_id:@product.id)), method: :delete do
+              .btn-floating.btn_detail.grey.unwatchTrigger{user: {id: current_user.id}, product: {id: @product.id}}
+                %i.fa.fa-tree.for_tap.font_margin
+        -else #watchしてない時の処理
+          .col.s3.right
+            = link_to new_product_review_path (@product) do
+              .btn-floating.btn_detail.pulse.green.watchTrigger{user: {id: current_user.id}, product: {id: @product.id}}
+                %i.fa.fa-tree.for_tap.font_margin
+      - else #ユーザーログインしてない
+        .col.right
+          = link_to new_user_session_path do
+            .btn-floating.btn_detail.pulse.grey
+              %i.fa.fa-pencil-square-o.for_tap.font_margin
+        .col.right
+          = link_to new_user_session_path do
+            .btn-floating.btn_detail.grey
+              %i.fa.fa-heart.for_tap.font_margin
+        .col.right
+          = link_to new_product_review_path (@product) do
+            .btn-floating.btn_detail.grey
+              %i.fa.fa-tree.for_tap.font_margin

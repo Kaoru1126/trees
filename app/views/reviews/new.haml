@@ -1,0 +1,33 @@
+= render 'shared/navBar'
+= render 'layouts/productNewShow/'
+.bg_lg.c_pw
+  .container
+    .row
+      .section
+      .col.s12.z-depth-3.trans_bg_grey.text_wh.center-align.fs_60.bold
+        = "#{@product.productName}"
+        %br/
+        = "のレビュー"
+      .col.s12
+        = form_for @review, url: {action: "create"}, html: {class: "nifty_form"} do |f|
+          .section
+          .input-field.col.s12
+            %textarea.materialize-textarea{:placeholder => "レビューを書いて、同じ症状や疾患を持つ方たちの為に、ベストなストレインが選べるように手伝って下さい。", :class => "for_product_new", :name => "review[review]", "data-length" => "4200", :required => "required"}
+            %label{:for => "textarea1", :class => "review_label"} レビュー (必須)
+            .section
+          .row
+            .col.s12.new_rate_label.valign-wrapper
+              .col.s3.push-s9.right
+                .input-field.col.s12
+                  .number_field.col.s12{:value => "50", :min => "0", :max => "100", :required => "required", :class => "for_product_new",}
+                    = f.number_field :rate
+                    %label{:for => "rate", :class => "inRateText"} 100点満点中
+              .col.s9.pull-s3.review_label.left このストレインのスコア (必須)
+            .col.s12
+              .col.s7.review_label 画像の投稿
+              .col.s5.right
+                .col.s12.input-field.btn.waves-effects
+                  = f.file_field :reviewImage
+          .section
+          .btn.waves-light.waves-effects.right
+            = f.submit "投稿する"

@@ -1,0 +1,218 @@
+.test {
+  background-color: blue;
+}
+.test2 {
+  background-color: yellow;
+}
+
+.fs_20 {
+  font-size: 20px;
+}
+
+.fs_26 {
+  font-size: 26px;
+}
+
+.fs_30 {
+  font-size: 30px;
+}
+
+.fs_36 {
+  font-size: 36px;
+}
+
+.fs_40 {
+  font-size: 40px;
+}
+
+.fs_50 {
+  font-size: 50px;
+}
+
+.fs_60 {
+  font-size: 60px;
+}
+
+.font_c {
+  color: white;
+}
+
+.flex_jc_center {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+// カードの色変えたい by dominant
+.idc {
+  background-color: $idc;
+}
+
+.stv {
+  background-color: $stv;
+}
+
+.idh {
+  background-color: $idh;
+}
+
+.sdh {
+  background-color: $sdh;
+}
+
+.hyb {
+  background-color: $hyb;
+}
+
+.index_img_size {
+  margin: 15px auto;
+  width: 300px;
+  height: 300px;
+  background-size: contain;
+}
+
+input[type=text]:not(.browser-default), {
+  height: 8rem;
+  font-size: 6rem;
+}
+
+input[type=text]:not(.browser-default).searchTop {
+  height: 8rem;
+  font-size: 6rem;
+}
+
+
+// ボタンのcss
+.col.s2.search_btn_box {
+  font-size: 6rem;
+  height: 8rem;
+}
+
+.show_top_img_place {
+  width: 100%;
+}
+
+.show_top_img_size {
+  width: 100%;
+  position: relative;
+}
+
+.show_absolute {
+  position: absolute;
+}
+
+.show_posi_detail {
+  top: 12%;
+  margin: 0px 13%;
+}
+
+.trans_bg_grey {
+  background: rgba(0,0,0, 0.6);
+}
+
+.trans_bg_l-grey {
+  background: rgba(200, 200, 200, 0.3);
+}
+
+.trans_bg_green {
+  background: rgba(11,97,56, 0.6);
+}
+
+.text_wh {
+  color:  #ffffff;
+}
+
+.edit.btn_detail {
+  font-size: 11rem;
+  height: 12rem;
+  width: 12rem;
+}
+
+.link_to_show {
+  color: black;
+}
+
+// =====星の評価===============
+//レート評価 変数
+$starFull: 60px;//星1個の幅
+$starHalf: $starFull / 2;//星半分（0.5）の幅
+$starNone: 0px;//星ゼロ
+
+$rate0-5: $starHalf;
+$rate0-5: $starHalf; //星0.5
+$rate1: $starFull;//星1
+$rate1-5: $starFull + $starHalf;//星1.5
+$rate2: $starFull * 2;//星2
+$rate2-5: ($starFull * 2) + $starHalf;//星2.5
+$rate3: $starFull * 3;//星3
+$rate3-5: ($starFull * 3) + $starHalf;//星3.5
+$rate4: $starFull * 4;//星4
+$rate4-5: ($starFull * 4) + $starHalf;//星4.5
+$rate5 :$starFull * 5;//星5
+
+.rate{
+  position: relative;
+  display: inline-block;
+  width: $starFull * 5;
+  height: $starFull;
+  font-size: $starFull;
+  &:before,&:after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '★★★★★';
+    display: inline-block;
+    height: $starFull;
+    line-height: $starFull;
+  }
+  &:before{
+  color: $blankStar;
+  }
+  &:after{
+  color: #ffa500;
+  overflow: hidden;
+  white-space: nowrap;//これがないと改行されて星の半分（0.5）が表現できなくなる
+  }
+}
+.rate0:after{//星0
+  width: $starNone;
+}
+.rate0-5:after{//星0.5
+  width: $rate0-5;
+}
+.rate1:after{//星1
+  width: $rate1;
+}
+.rate1-5:after{//星1.5
+  width: $rate1-5;
+}
+.rate2:after{//星2
+  width: $rate2;
+}
+.rate2-5:after{//星2.5
+  width: $rate2-5;
+}
+.rate3:after{//星3
+  width: $rate3;
+}
+.rate3-5:after{//星3.5
+  width: $rate3-5;
+}
+.rate4:after{//星4
+  width: $rate4;
+}
+.rate4-5:after{//星4.5
+  width: $rate4-5;
+}
+.rate5:after{//星5
+  width: $rate5;
+}
+
+
+.wrap{
+  width: 80px;
+  margin: 0 auto;
+}

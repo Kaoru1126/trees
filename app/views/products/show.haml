@@ -1,0 +1,13 @@
+= render 'shared/navBar'
+= render 'layouts/productNewShow/'
+.bg_lg.c_pw
+  .container
+    - if @theStrainsReviews.exists?
+      = render 'shared/productShowMost'
+      = render 'shared/productShowRecent'
+    - else
+      .row
+        .col.s12.z-depth-3.trans_bg_grey.text_wh.fs_60.mt_8
+          = "#{@product.productName}のレビューはまだありません。"
+          %br/
+          = "レビューを書いて一番最初のレビュアーになろう！"

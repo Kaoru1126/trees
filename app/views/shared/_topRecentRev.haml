@@ -1,0 +1,51 @@
+.container
+  .divider_BK
+  .section
+    - @recentThreeRevs.each do |recentTree|
+      .row
+        .col.s12
+          = link_to product_path (recentTree.product.id) do
+            .col.s12.fs_60.center-align.bold.top_productLink.waves-effect.truncate(20)
+              = recentTree.product.productName
+          .section
+          .col.s12.fs_30.center-align.bold
+            = recentTree.product.dominant
+          .col.s12.fs_60.center-align
+            .section
+            = link_to image_tag(recentTree.product.productImage, {:class => "top_three_img"}), product_path(recentTree.product.id)
+            .section
+          .col.s12
+            .col.s6.fs_20.pr_3.top_three_star
+              - if recentTree.rate <=  10.0 && recentTree.rate >= 0.1
+                %span.right.rate.rate0-5
+              -elsif recentTree.rate <= 20.0 && recentTree.rate >= 10.1
+                %span.right.rate.rate1
+              -elsif recentTree.rate <= 30.0 && recentTree.rate >= 20.1
+                %span.right.rate.rate1-5
+              -elsif recentTree.rate <= 40.0 && recentTree.rate >= 30.1
+                %span.right.rate.rate2
+              -elsif recentTree.rate <= 50.0 && recentTree.rate >= 40.1
+                %span.right.rate.rate2-5
+              -elsif recentTree.rate <= 60.0 && recentTree.rate >= 50.1
+                %span.right.rate.rate3
+              -elsif recentTree.rate <= 70.0 && recentTree.rate >= 60.1
+                %span.right.rate.rate3-5
+              -elsif recentTree.rate <= 80.0 && recentTree.rate >= 70.1
+                %span.right.rate.rate4
+              -elsif recentTree.rate <= 90.0 && recentTree.rate >= 80.1
+                %span.right.rate.rate4-5
+              -elsif recentTree.rate <= 100.0 && recentTree.rate >= 90.1
+                %span.right.rate.rate5
+              -else
+                %span.right.rate.rate0
+            .col.s6.fs_50
+              = ": " + "#{recentTree.rate}" + "/100pts"
+        .col.s12
+          = link_to user_path (recentTree.user.id) do
+            .col.s12.fs_30.center-align.top_productLink.waves-effect.truncate(20)
+              = "Reviewed by " + "#{recentTree.user.nickname}"
+          .col.s12.fs_40.center-align
+            .section
+            = recentTree.review.truncate(90)
+            .section
+            .divider_BK

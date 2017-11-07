@@ -1,0 +1,70 @@
+.row.user_new_row {
+  margin: 250px auto 350px;
+}
+
+body#user_signup {
+  background-color: #F5F4F0;
+  background-image: url(/images/user_new_bg_00.jpg);
+  background-size: cover;
+}
+
+h2.user_new_tagline {
+  font-size: 5rem;
+}
+
+.fa-user-circle.prefix {
+  font-size: 30px;
+}
+
+.field.btn.user_new_avatar_input {
+  height: unset;
+}
+
+.user_new_avatar_input {
+  font-size: 30px;
+}
+
+input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default).user_new_email_input {
+  font-size: 4rem;
+  height: 6rem;
+}
+
+// ログインページ
+body#user_login {
+  background-color: #F5F4F0;
+  background-image: url(/images/user_login_00.jpg);
+  background-size: cover;
+}
+
+.row.header {
+  margin-top : 350px;
+}
+
+.row.contents_box {
+ margin-bottom: 100rem;
+}
+
+body#user_edit {
+  background-image: url(/images/user_login_00.jpg);
+  background-size: cover;
+}
+
+.row.header_edit{
+  margin-top: 200px;
+}
+
+.row.contents_box_edit_mid {
+  margin-bottom: 200px;
+}
+
+.row.contents_box_edit_last {
+  margin-bottom: 100px;
+}
+
+textarea.materialize-textarea.userIntro {
+  font-size: 3rem;
+}
+
+.btn.red {
+  height: unset;
+}

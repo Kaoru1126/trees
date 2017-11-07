@@ -1,0 +1,77 @@
+= render 'shared/navBar'
+.container
+  .row.pt_20.fs_50
+    .col.s12.z-depth-3.trans_bg_grey.text_wh.center-align
+      = "#{@user.nickname}" +"の"
+      %br/
+      = "レビュー一覧"
+    .col.s12.fs_26.center-align
+      = paginate(@userReviews)
+  - @userReviews.each do |userReview|
+    .row.trans_bg_grey.text_wh
+      .col.s12.z-depth-3.trans_bg_l-grey.waves-effect
+        = link_to user_path(userReview.user.id) do
+          .col.s2
+            .section
+            = image_tag userReview.user.avatar, class: "circle inreview_size"
+          .col.s10
+            .section
+            .col.s12.fs_40.left-align
+              = userReview.user.nickname
+            .col.s12.fs_20.left-align
+              = userReview.created_at
+              .section
+      .col.s12.left-align
+        = link_to product_path (userReview.product.id) do
+          .col.s12.fs_50.truncate.waves-effect.waves-light
+            = userReview.product.productName
+        .col.s12.fs_.fs_30
+          = userReview.product.dominant
+        .col.s12
+          .col.s6.fs_20
+            - if userReview.rate <=  10.0 && userReview.rate >= 0.1
+              %span.right.rate.rate0-5
+            -elsif userReview.rate <= 20.0 && userReview.rate >= 10.1
+              %span.right.rate.rate1
+            -elsif userReview.rate <= 30.0 && userReview.rate >= 20.1
+              %span.right.rate.rate1-5
+            -elsif userReview.rate <= 40.0 && userReview.rate >= 30.1
+              %span.right.rate.rate2
+            -elsif userReview.rate <= 50.0 && userReview.rate >= 40.1
+              %span.right.rate.rate2-5
+            -elsif userReview.rate <= 60.0 && userReview.rate >= 50.1
+              %span.right.rate.rate3
+            -elsif userReview.rate <= 70.0 && userReview.rate >= 60.1
+              %span.right.rate.rate3-5
+            -elsif userReview.rate <= 80.0 && userReview.rate >= 70.1
+              %span.right.rate.rate4
+            -elsif userReview.rate <= 90.0 && userReview.rate >= 80.1
+              %span.right.rate.rate4-5
+            -elsif userReview.rate <= 100.0 && userReview.rate >= 90.1
+              %span.right.rate.rate5
+            -else
+              %span.right.rate.rate0
+          .col.s6.fs_50
+            = ": " + "#{userReview.rate}" + "/100pts"
+      .col.s12.fs_30.left-align
+        .divider
+        = simple_format(userReview.review)
+        .divider
+      .col.s12.fs_20.right-align
+        = "#{userReview.likereviews_counts}" + "人のストーナーがこのレビューを評価しています"
+      - if haveILikedReview? (userReview.review)
+        = link_to likereview_path(current_user.likereviews.find_by(review_id:userReview.id)), method: :delete do
+          .col.s12.btn.waves-effect.btn-large.grey.unlikeReviewTrigger{user: {id: current_user.id}, review: {id: userReview.id}}
+            %i.fa.fa-smile-o.goodreview_btn
+              = "Already liked this review!"
+            %i.fa.fa-smile-o.goodreview_btn
+      - else
+        = link_to product_path (userReview.id) do
+          .col.s12.btn.waves-effect.btn-large.likeReviewTrigger{user: {id: current_user.id}, review: {id: userReview.id}}
+            %i.fa.fa-smile-o.goodreview_btn
+              = "It's a great review! "
+            %i.fa.fa-smile-o.goodreview_btn
+.container
+  .row
+    .col.s12.fs_26.center-align
+      = paginate(@userReviews)
