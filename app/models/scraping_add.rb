@@ -23,9 +23,8 @@ class Scraping_add
         dom.each do |domi|
           dominant = domi.get_attribute('alt')
 
-        # record = Product.(dominant:dominant).first_or_initialize
-        # record(productName:str)
-        # record.save(dominant:dominant)
+          # ignored?
+
       end
   end
 
