@@ -2,7 +2,7 @@
 lock "3.8.2"
 
 set :application, "trees"
-set :repo_url, "it@github.com:Kaoru1126/trees.git"
+set :repo_url, "git@github.com:Kaoru1126/trees.git"
 
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
