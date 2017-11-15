@@ -57,11 +57,11 @@
                   = f.file_field :avatar, :class => "user_new_avatar_input"
                 .section
               .col.s12
-                .btn
-                  = f.submit "Sign up", class: "signUp"
+                .col.s12.btn.login_btn_size.waves-effect
+                  = f.submit "新規登録"
                 .section
               .col.s12.fs_30
-                = "すでにアカウントをお持ちですか？"
+                = "すでにアカウントをお持ちの場合はLog inページへ"
               .col.s12.fs_30
                 = render "devise/shared/links"
                 .section
