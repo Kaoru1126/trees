@@ -8,6 +8,7 @@
     = stylesheet_link_tag 'https://fonts.googleapis.com/icon?family=Material+Icons'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = favicon_link_tag('favicon_kusa.ico')
+    = analytics_init if Rails.env.production?
   %body
     = render 'shared/navBar'
     = yield
