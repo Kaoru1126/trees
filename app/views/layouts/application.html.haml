@@ -1,7 +1,6 @@
 !!!
 %html
   %head
-    = analytics_init if Rails.env.production?
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title Kusawake
     = csrf_meta_tags
@@ -10,5 +9,6 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = favicon_link_tag('favicon_kusa.ico')
   %body
+    = analytics_init if Rails.env.production?
     = render 'shared/navBar'
     = yield
