@@ -56,7 +56,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :production do
   gem 'unicorn'
-  gem 'google-analytics-rails'
 end
 
 group :development, :test do
@@ -83,3 +82,4 @@ gem 'mechanize'
 gem 'config'
 gem 'omniauth-twitter'
 gem 'fog'
+gem 'google-analytics-rails'
