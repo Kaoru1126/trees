@@ -21,12 +21,12 @@
                   .number_field.col.s12{:value => "50", :min => "0", :max => "100", :required => "required", :class => "for_product_new",}
                     = f.number_field :rate
                     %label{:for => "rate", :class => "inRateText"} 100点満点中
-              .col.s9.pull-s3.review_label.left このストレインのスコア (必須)
+              .col.s9.pull-s3.review_label.bold.left このストレインのスコア (必須)
             .col.s12
-              .col.s7.review_label 画像の投稿
+              .col.s7.review_label.bold 画像の投稿
               .col.s5.right
                 .col.s12.input-field.btn.waves-effects
                   = f.file_field :reviewImage
           .section
-          .btn.waves-light.waves-effects.right
+          .col.s12.submitting.btn.waves-light.waves-effects.right
             = f.submit "投稿する"
