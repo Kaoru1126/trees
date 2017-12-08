@@ -15,7 +15,7 @@ $(function(){
         console.log(this)
       })
       .fail(function(){
-        alert('error');
+        alert('お気に入りリストに追加しました');
       });
   });
   // #UNfavのAJAXの記述
@@ -31,9 +31,6 @@ $(function(){
     .done(function(data){
       console.log(this);
     })
-    // .fail(function(){
-    //   alert('error');
-    // });
   });
 
 });

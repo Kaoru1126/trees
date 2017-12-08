@@ -15,7 +15,7 @@ $(function(){
         console.log(this)
       })
       .fail(function(){
-        alert('error');
+        alert('気になるリストにいれました');
       });
   });
   // #UNwatchのAJAXの記述
@@ -31,9 +31,6 @@ $(function(){
     .done(function(data){
       console.log(this);
     })
-    // .fail(function(){
-    //   alert('error');
-    // });
   });
 
 });
